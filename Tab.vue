@@ -17,7 +17,7 @@
 
     export default {
         name: "tab.vue",
-        data: function () {
+        data (){
             return{
                 tabShowDesc: false,
                 tabShowMob: false,
@@ -60,8 +60,8 @@
             window.removeEventListener('resize', this.getWindowWidth);
         },
         methods: {
-            getWindowWidth: function (){
-                var that = this;
+            getWindowWidth (){
+                let that = this;
                 this.windowWidth = document.documentElement.clientWidth;
                 if (this.windowWidth > 767 - 15){
                     that.tabShowDesc = true;
@@ -71,23 +71,23 @@
                     that.tabShowMob = true;
                 }
             },
-            openItem: function (item){
-                var that = this;
-                var index= 0;
+            openItem (item){
+                let that = this;
+                let index = 0;
                 if(item.open !== true){
-                    this.items.forEach(function(item){
+                    this.items.forEach(item => {
                         index = item.id - 1;
                         that.items[index].open = false;
                     });
                 }
                 item.open = !  item.open;
             },
-            enter: function(el, done){
+            enter (el, done){
                 Velocity(el, 'slideDown', {duration: 300,
                         easing: "easeInBack"},
                     {complete: done})
             },
-            leave: function(el, done){
+            leave (el, done){
                 Velocity(el, 'slideUp', {duration: 300,
                         easing: "easeInBack"},
                     {complete: done})
